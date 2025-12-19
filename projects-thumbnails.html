@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plodroid | Thumbnail Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Orbitron', Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      border-bottom: 3px solid #666;
+    }
+    h1 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1.5rem;
+    }
+    .gallery {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    }
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Minecraft Thumbnails</h1>
+</header>
+
+<div class="gallery">
+  <img src="thumb1.png" loading="lazy" onclick="openLightbox(this.src)">
+  <img src="thumb2.png" loading="lazy" onclick="openLightbox(this.src)">
+  <img src="thumb3.png" loading="lazy" onclick="openLightbox(this.src)">
+  <img src="thumb4.png" loading="lazy" onclick="openLightbox(this.src)">
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" />
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = src;
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
